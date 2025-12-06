@@ -353,7 +353,7 @@
     \textbf{Proof:}
     \begin{itemize}
         \item<2-> Any nonpreemptive schedule is also a valid preemptive schedule
-        \item<3-> The optimal preemptive schedule is at least as good as any preemptive schedule
+        \item<3-> The optimal preemptive schedule is at least as good as any nonpreemptive schedule
         \item<4-> Therefore, optimal preemptive $\leq$ optimal nonpreemptive
     \end{itemize}
 \end{frame}
@@ -415,9 +415,7 @@
                 \node[above] at (5.5,1.2) {$C_j^N$};
             \end{tikzpicture}
         \end{center}
-    }
-    \vspace{0.2cm}
-    onslide<3->{
+        \vspace{0.2cm}
         Therefore: $C_j^N \leq \max_{k=1,\ldots,j} r_k + \sum_{k=1}^{j} p_k$
     }
 \end{frame}
@@ -440,9 +438,7 @@
             \draw[->,thick] (3.2,-0.5) -- (1.3,-0.2);
         \end{tikzpicture}
     \end{center}
-    onslide<2->{
-        \textbf{Result:} Each job's completion time at most doubles! \qed
-    }
+    \textbf{Result:} Each job's completion time at most doubles! \qed
 \end{frame}
 
 \section{Theorem 4.3: The Result}
