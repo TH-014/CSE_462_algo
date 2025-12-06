@@ -332,83 +332,6 @@
 
 \section{Lemma 4.2: Bounding the Delay}
 
-% % --- Slide 9: Lemma 4.2 Animation ---
-% \begin{frame}{Lemma 4.2: Bounding the Delay}
-%     We want to prove that for any job $j$, our schedule isn't "too late".
-    
-%     \begin{block}{Lemma 4.2}
-%     For each job $j$: \quad $C_j^N \le 2 C_j^P$
-%     \end{block}
-    
-%     \vspace{0.2cm}
-%     \begin{center}
-%     \begin{tikzpicture}[scale=0.8]
-%         \draw[thick, ->] (0,0) -- (11,0) node[right] {Time};
-        
-%         % Overlay 1: The Span
-%         \onslide<2->{
-%             \draw[thick] (1, -0.2) -- (1, 0.2);
-%             \node[below] at (1, -0.2) {Start};
-%             \node[above] at (10, 0.5) {$C_j^N$};
-%             \draw[thick] (10, -0.2) -- (10, 0.2);
-%             \draw[decoration={brace,mirror,raise=5pt},decorate] (1,0) -- (10,0) node[pos=0.5,below=10pt] {Total Time elapsed for first $j$ jobs};
-%         }
-
-%         % Overlay 2: Components
-%         \onslide<3->{
-%             \fill[idle] (1,0) rectangle (2,0.5);
-%             \fill[idle] (4,0) rectangle (5,0.5);
-%             \node[above, font=\tiny, align=center] at (1.5,0.5) {Idle};
-            
-%             \fill[job1] (2,0) rectangle (4,0.5);
-%             \fill[job2] (5,0) rectangle (10,0.5) node[midway, white] {Processing};
-%         }
-        
-%         % Overlay 3: Math association
-%         \onslide<4->{
-%             \node[anchor=west, align=left] at (0, -2) {
-%                1. Idle time only exists before Release Dates: \\
-%                \quad $\implies$ Last Idle moment $\le \max_{k \le j} r_k \le C_j^P$ \\
-%                2. Processing time is sum of lengths: \\
-%                \quad $\implies \sum_{k \le j} p_k \le C_j^P$
-%             };
-%         }
-%     \end{tikzpicture}
-%     \end{center}
-% \end{frame}
-
-% \section{Theorem 4.3: The Result}
-
-% % --- Slide 10: Theorem 4.3 ---
-% \begin{frame}{Theorem 4.3: The Result}
-%     \begin{alertblock}{Theorem 4.3}
-%     Scheduling in order of completion times of an optimal preemptive schedule is a \textbf{2-approximation algorithm}.
-%     \end{alertblock}
-    
-%     \vspace{1cm}
-%     \textbf{Proof:}
-%     \onslide<2->{
-%     \begin{align*}
-%         \sum_{j=1}^n C_j^N &\le \sum_{j=1}^n (2 C_j^P)  \quad \text{(By Lemma 4.2)} \\
-%                            &= 2 \sum_{j=1}^n C_j^P \\
-%                            &\le 2 \cdot OPT \quad \quad \text{(By Observation 4.1)}
-%     \end{align*}
-%     }
-% \end{frame}
-
-% % --- Slide 11: Summary ---
-% \begin{frame}{Summary}
-%     To solve the Single Machine Scheduling problem:
-    
-%     \vspace{0.5cm}
-%     \begin{itemize}
-%         \item<1-> We relax constraints and solve using \textbf{SRPT} (Preemptive).
-%         \item<2-> We simply follow the completion order from SRPT.
-%         \item<3-> Even with idle times added, we proved the total time is at most \textbf{double} the optimal possible time.
-%         \item<4-> This is a deterministic rounding of a complex scheduling problem.
-%     \end{itemize}
-% \end{frame}
-
 \begin{frame}{Lemma 4.2: Bounding the Delay}
     \begin{block}{Lemma 4.2}
         For each job $j = 1, \ldots, n$: \quad $C_j^N \leq 2C_j^P$ \\
@@ -431,33 +354,6 @@
         $$C_j^P \geq \sum_{k=1}^{j} p_k$$
     \end{enumerate}
 \end{frame}
-
-% \begin{frame}{Visualizing Lower Bounds}
-%     \begin{center}
-%         \begin{tikzpicture}[scale=1.1]
-%             % First bound
-%             \draw[thick,->] (0,2) -- (6,2) node[right] {Time};
-%             \draw[fill=orange!40] (0,1.5) rectangle (1.5,2.5);
-%             \node at (0.75,2) {\small $\max r_k$};
-%             \draw[dashed] (1.5,1.5) -- (1.5,2.5);
-%             \draw[->,thick,red] (2,2) -- (4,2);
-%             \node[above] at (3,2) {Job $j$ must start after this};
-%             \draw[fill=blue!40] (4,1.5) rectangle (5.5,2.5);
-%             \node at (4.75,2) {\small Job $j$};
-%             \node[left] at (0,2) {Bound 1:};
-
-%             % Second bound
-%             \draw[thick,->] (0,0) -- (6,0) node[right] {Time};
-%             \draw[fill=green!40] (0,-0.5) rectangle (3,0.5);
-%             \node at (1.5,0) {\small $\sum_{k=1}^j p_k$};
-%             \node[left] at (0,0) {Bound 2:};
-%             \node[right] at (3,0) {$\geq C_j^P$};
-
-%             \draw[->,thick,purple] (2.5,1.2) -- (2.5,0.6);
-%             \node[right,purple] at (2.5,0.9) {Both are lower bounds!};
-%         \end{tikzpicture}
-%     \end{center}
-% \end{frame}
 
 \begin{frame}{Lemma 4.2: Upper Bound on $C_j^N$}
     \textbf{Key Observation:} In nonpreemptive schedule, machine is idle only when waiting for next job's release.
@@ -544,47 +440,6 @@
         \end{center}
     }
 \end{frame}
-
-% \begin{frame}{Algorithm Performance on Example}
-%     Recall our example: $\sum_j C_j^P = 14$ (preemptive)
-
-%     \vspace{0.3cm}
-%     Order jobs by preemptive completion: Job 1 ($C_1^P=2$), Job 2 ($C_2^P=5$), Job 3 ($C_3^P=7$)
-
-%     \vspace{0.3cm}
-%     \textbf{Nonpreemptive schedule in this order:}
-%     \begin{center}
-%         \begin{tikzpicture}[scale=1.1]
-%         \draw[thick,->] (0,0) -- (8,0) node[right] {Time};
-%         \foreach \x in {0,2,5,7}
-%             \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-
-%         % Job 1
-%         \draw[fill=blue!40,draw=black,thick] (0,0.5) rectangle (2,1.5);
-%         \node at (1,1) {\textbf{Job 1}};
-
-%         % Job 2 (must wait until time 4, but Job 1 ends at 2, so start at max(2,4)=4)
-%         \draw[fill=red!40,draw=black,thick] (4,0.5) rectangle (5,1.5);
-%         \node at (4.5,1) {\textbf{Job 2}};
-%         \draw (4,0.1) -- (4,-0.1) node[below] {4};
-
-%         % Job 3 (released at 1, but must wait for Job 2)
-%         \draw[fill=green!40,draw=black,thick] (5,0.5) rectangle (9,1.5);
-%         \node at (7,1) {\textbf{Job 3}};
-%         \draw (9,0.1) -- (9,-0.1) node[below] {9};
-
-%         % Idle time
-%         \draw[pattern=north east lines,pattern color=gray] (2,0.5) rectangle (4,1.5);
-%         \node at (3,1) {\small Idle};
-
-%         \draw[dashed,red] (2,1.5) -- (2,1.8) node[above] {\small $C_1^N=2$};
-%         \draw[dashed,red] (5,1.5) -- (5,1.8) node[above] {\small $C_2^N=5$};
-%         \draw[dashed,red] (9,1.5) -- (9,1.8) node[above] {\small $C_3^N=9$};
-%         \end{tikzpicture}
-%     \end{center}
-
-%     $\sum_j C_j^N = 2 + 5 + 9 = 16 \leq 2 \times 14 = 28$ ✓
-% \end{frame}
 
 \section{Summary}
 
