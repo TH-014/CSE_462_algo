@@ -66,15 +66,43 @@
     }
 \end{frame}
 
-\begin{frame}{Nonpreemptive vs Preemptive Scheduling}
-    \begin{block}{Nonpreemptive}
-    Once a job starts, it must complete without interruption
-    \end{block}
-
-    \vspace{0.3cm}
+\begin{frame}{Preemptive vs Nonpreemptive Scheduling}
     \begin{block}{Preemptive}
-    Jobs can be interrupted and resumed later
+        Jobs can be interrupted and resumed later
     \end{block}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \draw[thick] (0,2) rectangle (6,2.5);
+            \draw[fill=blue!40] (0,2) rectangle (1.5,2.5);
+            \draw[fill=green!40] (1.5,2) rectangle (3,2.5);
+            \draw[fill=red!40] (3,2) rectangle (3.8,2.5);
+            \draw[fill=green!40] (3.8,2) rectangle (6,2.5);
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.2cm}
+    
+    \begin{block}{Nonpreemptive}
+        Once a job starts, it must complete without interruption
+    \end{block}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \draw[thick] (0,2) rectangle (6,2.5);
+            \draw[fill=blue!40] (0,2) rectangle (1.5,2.5);
+            \draw[fill=green!40] (1.5,2) rectangle (5.2,2.5);
+            \draw[fill=red!40] (5.2,2) rectangle (6,2.5);
+        \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \draw[thick] (0,-1.2) rectangle (6.5,-0.7);
+            \draw[fill=blue!40] (0,-1.2) rectangle (1.5,-0.7);
+            \draw[pattern=north east lines] (1.5,-1.2) rectangle (3,-0.7);
+            \draw[fill=red!40] (3,-1.2) rectangle (3.8,-0.7);
+            \draw[fill=green!40] (3.8,-1.2) rectangle (6.5,-0.7);
+        \end{tikzpicture}
+    \end{center}
+    
 \end{frame}
 
 \section{The Challenge \& Strategy}
